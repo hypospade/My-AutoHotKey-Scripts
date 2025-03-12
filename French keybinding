@@ -1,0 +1,159 @@
+
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#SingleInstance Force
+
+; Made in AutoHotkey Version 1.1.33.09 
+;  by TechnicJelle (https://github.com/TechnicJelle/My-AutoHotKey-Scripts)
+
+#IfWinActive, ahk_class MSPaintApp
+
+hotkeysEnabled := True
+
+a:: ;pencil
+	if(hotkeysEnabled) {
+		Send {Alt}1
+		reload
+	} else {
+		Send p
+	}
+return
+
+u:: ;fill bucket
+	if(hotkeysEnabled) {
+		Send {Alt}2
+		reload
+	} else {
+		Send f
+	}
+return
+
+^t:: ;text
+	if(hotkeysEnabled) {
+		keywait, Ctrl ;wait until control is released
+		Send {Alt}3
+		KeyWait, LButton, D
+		KeyWait, LButton, U
+		hotkeysEnabled := False
+		; waits until text editing is done
+		KeyWait, LButton, D
+		KeyWait, LButton, U
+		hotkeysEnabled := True
+		Send {Alt}6
+	} else {
+		Send {Ctrl}t
+	}
+return
+
+e:: ;eraser
+	if(hotkeysEnabled) {
+		Send {Alt}4
+		reload
+	} else {
+		Send e
+	}
+return
+
+p:: ;colour picker
+	if(hotkeysEnabled) {
+		Send {Alt}5
+		reload
+	} else {
+		Send c
+	}
+return
+
+^r up:: ;rect select
+	if(hotkeysEnabled) {
+		keywait, Ctrl ;wait until control is released
+		Send {Alt}6
+		reload
+	} else {
+		Send {Ctrl}r
+	}
+return
+
+^+r up:: ;transparent selection
+	if(hotkeysEnabled) {
+		keywait, Ctrl ;wait until control is released
+		keywait, Shift ;wait until shift is released
+		Send {Alt}8
+		reload
+	} else {
+		Send {Ctrl}{Shift}t
+	}
+return
+
+w:: ;line thickness 1
+	if(hotkeysEnabled) {
+		Send {Alt}08{Enter}
+		reload
+	} else {
+		Send 1
+	}
+return
+
+x:: ;line thickness 2
+	if(hotkeysEnabled) {
+		Send {Alt}08{Down 1}{Enter}
+		reload
+	} else {
+		Send 2
+	}
+return
+
+c:: ;line thickness 3
+	if(hotkeysEnabled) {
+		Send {Alt}08{Down 2}{Enter}
+		reload
+	} else {
+		Send 3
+	}
+return
+
+v:: ;line thickness 4
+	if(hotkeysEnabled) {
+		Send {Alt}08{Down 3}{Enter}
+		reload
+	} else {
+		Send 4
+	}
+return
+
+z:: ;line tool
+	if(hotkeysEnabled) {
+		Send {Alt}CFH{Enter}
+		reload
+	} else {
+		Send l
+	}
+return
+
+t:: ;polygone
+	if(hotkeysEnabled) {
+		Send {Alt}CFH{Right 5}{Enter}
+		reload
+	} else {
+		Send l
+	}
+return
+
+r:: ;rectangle
+	if(hotkeysEnabled) {
+		Send {Alt}CFH{Right 3}{Enter}
+		reload
+	} else {
+		Send l
+	}
+return
+
+g:: ;gridlines
+	if(hotkeysEnabled) {
+		Send {Alt}AQ{Enter}{Alt}H{Esc 2}
+		reload
+	} else {
+		Send g
+	}
+return
